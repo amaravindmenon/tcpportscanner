@@ -1,11 +1,12 @@
-#TCP Port Scanner. This help to find all the open port in a given IP address
+#TCP Port Scanner. This help to find all the open port in a given IP
+#address
 
 from socket import *
 from sys import *
 import re
 import threading
 
-regex = '''^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.( 
+regex = '''^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(
             25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.( 
             25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.( 
             25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)$'''
@@ -39,7 +40,8 @@ def scan(ab1,ab2):
                 psport = open
                 s.close()
             except:
-                print("port %d is closed" % i)
+                #print("port %d is closed" % i)
+                pass
                 s.close()
     else:
         print("Invalid IP address")
@@ -52,6 +54,8 @@ t4 = threading.Thread(target=scan,args=(300,400))
 t5 = threading.Thread(target=scan,args=(400,500))
 t6 = threading.Thread(target=scan,args=(500,600))
 t7 = threading.Thread(target=scan,args=(600,700))
+t8 = threading.Thread(target=scan,args=(700,800))
+t8 = threading.Thread(target=scan,args=(700,800))
 
 
 t1.start()
@@ -61,6 +65,7 @@ t4.start()
 t5.start()
 t6.start()
 t7.start()
+t8.start()
 
 t1.join()
 t2.join()
@@ -69,6 +74,7 @@ t4.join()
 t5.join()
 t6.join()
 t7.join()
+t8.join()
 
 
 print(" ")
@@ -76,9 +82,6 @@ print(" ")
 print("________________")
 print(" Scan Completed ")
 print("----------------")
-print("")
-print("Open Ports are: ")
-print(psport)
 
     
 #Thankyou
